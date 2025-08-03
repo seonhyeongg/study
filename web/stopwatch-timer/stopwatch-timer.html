@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch & Timer</title>
+    <link rel="stylesheet" href="stopwatch-timer-css.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <h2>스탑워치 / 타이머</h2>
+
+    <input type="radio" name="mode" value="stopwatch" id="stopwatch-raido" checked />
+    <label for="stopwatch-raido">스탑워치</label>
+    <input type="radio" name="mode" value="timer" id="timer-raido" />
+    <label for="timer-raido">스탑워치</label>
+
+    <div id="stopwatch" class="mode active">
+      <div>
+        <input id="input-hours" type="number" min="0" placeholder="시간" />
+        <input id="input-minutes" type="number" min="0" max="59" placeholder="분" />
+        <input id="input-seconds" type="number" min="0" max="59" placeholder="초" />
+        <button id="set-time">Set Time</button>
+      </div>
+
+      <div id="stopwatch-display">00:00:00</div>
+
+      <div class="button-grp">
+        <button id="stopwatch-start">Start</button>
+        <button id="stopwatch-stop">Stop</button>
+        <button id="stopwatch-reset">Reset</button>
+      </div>
+    </div>
+
+    <div id="timer" class="mode">
+      <div id="timer-display">00:00:00</div>
+      <div class="button-grp">
+        <button id="timer-start">Start</button>
+        <button id="timer-stop">Stop</button>
+        <button id="timer-reset">Reset</button>
+      </div>
+    </div>
+
+    <script src="stopwatch-timer-js.js"></script>
+  </body>
+</html>
