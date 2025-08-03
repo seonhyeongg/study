@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원 가입</title>
+    <link rel="stylesheet" href="form-css.css" />
+  </head>
+  <body>
+    <form class="form-container">
+      <h2 class="form-title">회원 가입</h2>
+
+      <h3 class="form-section-title">기본 정보</h3>
+
+      <div class="form-row">
+        <label for="name" class="form-label required">이름</label>
+        <input type="text" id="name" name="name" class="form-input" placeholder="홍길동" maxlength="10" required />
+      </div>
+
+      <div class="form-row radio-container">
+        <label class="form-label required">성별</label>
+        <label class="form-radio-label">
+          <input type="radio" name="gender" value="Male" required />
+          남성
+        </label>
+        <label class="form-radio-label">
+          <input type="radio" name="gender" value="Female" required />
+          여성
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label for="region" class="form-label">거주 지역</label>
+        <select id="region" name="region" class="form-input">
+          <option value="">-- 지역 --</option>
+
+          <optgroup label="특별시/광역시">
+            <option value="seoul" selected>서울특별시</option>
+            <option value="busan">부산광역시</option>
+            <option value="incheon">인천광역시</option>
+            <option value="daegu">대구광역시</option>
+            <option value="daejeon">대전광역시</option>
+            <option value="gwangju">광주광역시</option>
+            <option value="ulsan">울산광역시</option>
+          </optgroup>
+
+          <optgroup label="도">
+            <option value="gyeonggi">경기도</option>
+            <option value="chungbuk">충청북도</option>
+            <option value="chungnam">충청남도</option>
+            <option value="jeonnam">전라남도</option>
+            <option value="gyeongbuk">경상북도</option>
+            <option value="gyeongnam">경상남도</option>
+          </optgroup>
+
+          <optgroup label="특별자치시/특별자치도">
+            <option value="sejong">세종특별자치시</option>
+            <option value="gangwon">강원특별자치도</option>
+            <option value="jeonbuk">전북특별자치도</option>
+            <option value="jeju">제주특별자치도</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <h3 class="form-section-title">이메일 및 비밀번호</h3>
+
+      <div class="form-row">
+        <label for="email" class="form-label required">이메일</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="example@email.com" size="30" required />
+      </div>
+
+      <div class="form-row">
+        <label for="password" class="form-label required">비밀번호</label>
+        <input type="password" id="password" name="password" class="form-input" required />
+      </div>
+
+      <div class="form-row">
+        <label for="confirmPassword" class="form-label required">비밀번호 확인</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required />
+      </div>
+
+      <h3 class="form-section-title">추가 정보</h3>
+
+      <div class="form-row">
+        <label for="skills" class="form-label">보유 스킬 (복수 선택)</label>
+        <select id="skills" name="skills" multiple class="form-input multi-select">
+          <option value="python">Python</option>
+          <option value="sql">SQL</option>
+          <option value="r">R</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="java">Java</option>
+          <option value="js">JavaScript</option>
+        </select>
+      </div>
+
+      <h3 class="form-section-title">약관 동의</h3>
+
+      <div class="form-row checkbox-container">
+        <label for="agree" class="form-label required">개인정보 처리 방침에 동의합니다. (필수)</label>
+        <input type="checkbox" id="agree" name="agree" value="agree" required />
+      </div>
+
+      <div class="form-row checkbox-container">
+        <label for="marketing" class="form-label">마케팅 정보 수신에 동의합니다. (선택)</label>
+        <input type="checkbox" id="marketing" name="marketing" value="agree" />
+      </div>
+
+      <input type="hidden" name="signup_source" value="main_page" />
+      <input type="hidden" name="form_version" value="1.0" />
+
+      <div class="form-row">
+        <button type="submit" class="submit-btn">회원 가입</button>
+      </div>
+      <div class="form-row">
+        <button type="reset" class="reset-btn">초기화</button>
+      </div>
+    </form>
+  </body>
+</html>
