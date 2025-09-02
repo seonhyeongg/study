@@ -1,6 +1,10 @@
 # ---- OS 불필요 파일 ----
 .DS_Store
 
+# ---- VS Code ----
+.vscode/
+*.code-workspace
+
 # ---- Python 캐시 파일 ----
 __pycache__/
 *.pyc
