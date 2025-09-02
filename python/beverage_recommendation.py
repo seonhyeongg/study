@@ -1,3 +1,9 @@
+"""
+음료 추천 시스템
+--------------------
+사용자 주문 내역을 관리하고 최근 태그 기반으로 음료를 추천한다.
+"""
+
 from dataclasses import dataclass
 from typing import List
 
@@ -6,7 +12,14 @@ from typing import List
 
 @dataclass
 class Beverage:
-    """메뉴에 등록되는 음료: 이름, 가격, 태그"""
+    """
+    메뉴에 등록되는 음료
+
+    Attributes:
+        name (str): 음료 이름
+        price (int): 음료 가격
+        tags (List[str]): 음료 특징 태그 목록
+    """
 
     name: str
     price: int
@@ -14,7 +27,13 @@ class Beverage:
 
 
 class Order:
-    """특정 음료와 수량으로 구성된 주문 1건"""
+    """
+    특정 음료와 수량으로 구성된 주문 1건
+
+    Attributes:
+        beverage (Beverage): 주문한 음료
+        quantity (int): 주문 수량
+    """
 
     def __init__(self, beverage: Beverage, quantity: int):
         self.beverage = beverage
@@ -23,31 +42,54 @@ class Order:
     @property
     def total_price(self) -> int:
         """
-        주문 1건의 총 금액 계산: 음료 가격 * 주문 수량
+        주문 1건의 총 금액 계산
+
+        Returns:
+            int: 음료 가격 * 주문 수량
         """
         return self.beverage.price * self.quantity
 
 
 class User:
-    """사용자: 이름, 주문 내역"""
+    """
+    사용자 정보 및 주문 내역 관리
+
+    Attributes:
+        name (str): 사용자 이름
+        order_list (List[Order]): 사용자 주문 내역
+    """
 
     def __init__(self, name: str):
         self.name = name
         self.order_list = []  # 사용자가 현재까지 주문한 기록
 
     def order_append(self, order: Order):
-        """새로운 주문을 사용자 주문 내역에 추가"""
+        """
+        새로운 주문을 사용자 주문 내역에 추가
+
+        Args:
+            order (Order): 추가할 주문
+        """
         self.order_list.append(order)
 
     def get_total_price(self) -> int:
-        """현재까지 주문한 모든 주문의 총 금액 계산"""
+        """
+        현재까지 주문한 모든 주문의 총 금액 계산
+
+        Returns:
+            int: 모든 주문의 총합 금액
+        """
         return sum(order.total_price for order in self.order_list)
 
     def get_recent_tags(self, n: int = 2) -> List[str]:
         """
-        최근 n건 주문 내역에서 등장한 태그 반환
-        - set으로 변환하여 중복 태그 제거
-        - 기본값 n=2 -> 최근 2개 주문 기준
+        최근 주문 내역에서 태그 추출
+
+        Args:
+            n (int, optional): 최근 n개의 주문 기준 (기본값 2)
+
+        Returns:
+            List[str]: 최근 주문에서 추출된 고유 태그 목록
         """
         tags = []
         for order in self.order_list[-n:]:  # 최근 n개 주문 확인
@@ -57,15 +99,25 @@ class User:
 
 
 class Recommendation:
-    """추천: 전체 메뉴 중에서 사용자 추천 음료 검색"""
+    """
+    추천 시스템: 사용자 주문 태그 기반 메뉴 추천
+
+    Attributes:
+        menu (List[Beverage]): 전체 메뉴 리스트
+    """
 
     def __init__(self, menu: List[Beverage]):
         self.menu = menu
 
     def recommend(self, user: User) -> List[str]:
         """
-        사용자의 최근 주문 태그를 기반으로 메뉴에서 추천 음료 선택
-        - 사용자 최근 태그와 메뉴의 태그가 겹치면 추천 리스트에 추가
+        사용자 최근 주문 태그와 메뉴 태그를 비교해 추천 음료 제공
+
+        Args:
+            user (User): 추천 대상 사용자
+
+        Returns:
+            List[str]: 추천 음료 이름 리스트
         """
         recent_tags = user.get_recent_tags()
         recommendations = []
