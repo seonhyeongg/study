@@ -33,7 +33,7 @@ function fetchPosts(userId) {
     })
 }
 
-// asynce 함수 - 항상 Promise를 반환함
+// async 함수 - 항상 Promise를 반환함
 // 사용자 정보 및 게시글 로드
 async function loadUserData() {
     output.innerText = ""; // 출력 영역 초기화
