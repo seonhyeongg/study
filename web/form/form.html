@@ -12,11 +12,21 @@
 
       <h3 class="form-section-title">기본 정보</h3>
 
+      <!-- 이름 입력 -->
       <div class="form-row">
         <label for="name" class="form-label required">이름</label>
-        <input type="text" id="name" name="name" class="form-input" placeholder="홍길동" maxlength="10" required />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          class="form-input"
+          placeholder="홍길동"
+          maxlength="10"
+          required
+        />
       </div>
 
+      <!-- 성별 선택 (라디오 버튼) -->
       <div class="form-row radio-container">
         <label class="form-label required">성별</label>
         <label class="form-radio-label">
@@ -29,6 +39,7 @@
         </label>
       </div>
 
+      <!-- 거주 지역 선택 (드롭다운) -->
       <div class="form-row">
         <label for="region" class="form-label">거주 지역</label>
         <select id="region" name="region" class="form-input">
@@ -64,26 +75,57 @@
 
       <h3 class="form-section-title">이메일 및 비밀번호</h3>
 
+      <!-- 이메일 입력 -->
       <div class="form-row">
         <label for="email" class="form-label required">이메일</label>
-        <input type="email" id="email" name="email" class="form-input" placeholder="example@email.com" size="30" required />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-input"
+          placeholder="example@email.com"
+          size="30"
+          required
+        />
       </div>
 
+      <!-- 비밀번호 입력 -->
       <div class="form-row">
         <label for="password" class="form-label required">비밀번호</label>
-        <input type="password" id="password" name="password" class="form-input" required />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-input"
+          required
+        />
       </div>
 
+      <!-- 비밀번호 확인 입력 -->
       <div class="form-row">
-        <label for="confirmPassword" class="form-label required">비밀번호 확인</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required />
+        <label for="confirmPassword" class="form-label required"
+          >비밀번호 확인</label
+        >
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          class="form-input"
+          required
+        />
       </div>
 
       <h3 class="form-section-title">추가 정보</h3>
 
+      <!-- 보유 스킬 (멀티 셀렉트) -->
       <div class="form-row">
         <label for="skills" class="form-label">보유 스킬 (복수 선택)</label>
-        <select id="skills" name="skills" multiple class="form-input multi-select">
+        <select
+          id="skills"
+          name="skills"
+          multiple
+          class="form-input multi-select"
+        >
           <option value="python">Python</option>
           <option value="sql">SQL</option>
           <option value="r">R</option>
@@ -96,19 +138,26 @@
 
       <h3 class="form-section-title">약관 동의</h3>
 
+      <!-- 약관 동의 (체크 박스) -->
       <div class="form-row checkbox-container">
-        <label for="agree" class="form-label required">개인정보 처리 방침에 동의합니다. (필수)</label>
+        <label for="agree" class="form-label required"
+          >개인정보 처리 방침에 동의합니다. (필수)</label
+        >
         <input type="checkbox" id="agree" name="agree" value="agree" required />
       </div>
 
       <div class="form-row checkbox-container">
-        <label for="marketing" class="form-label">마케팅 정보 수신에 동의합니다. (선택)</label>
+        <label for="marketing" class="form-label"
+          >마케팅 정보 수신에 동의합니다. (선택)</label
+        >
         <input type="checkbox" id="marketing" name="marketing" value="agree" />
       </div>
 
+      <!-- 숨겨진 값 (추적용) -->
       <input type="hidden" name="signup_source" value="main_page" />
       <input type="hidden" name="form_version" value="1.0" />
 
+      <!-- 제출 및 초기화 버튼 -->
       <div class="form-row">
         <button type="submit" class="submit-btn">회원 가입</button>
       </div>

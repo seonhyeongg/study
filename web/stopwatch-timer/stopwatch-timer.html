@@ -5,27 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stopwatch & Timer</title>
     <link rel="stylesheet" href="stopwatch-timer-css.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h2>스탑워치 / 타이머</h2>
+    <h2>Stopwatch & Timer</h2>
 
-    <input type="radio" name="mode" value="stopwatch" id="stopwatch-raido" checked />
-    <label for="stopwatch-raido">스탑워치</label>
-    <input type="radio" name="mode" value="timer" id="timer-raido" />
-    <label for="timer-raido">스탑워치</label>
+    <!-- 모드 선택 라디오 버튼 (스탑워치/타이머)-->
+    <input
+      type="radio"
+      name="mode"
+      value="stopwatch"
+      id="stopwatch-raido"
+      checked
+    />
+    <label for="stopwatch-radio">Stopwatch</label>
+    <input type="radio" name="mode" value="timer" id="timer-radio" />
+    <label for="timer-radio">Timer</label>
 
+    <!-- Stopwatch 영역 -->
     <div id="stopwatch" class="mode active">
       <div>
+        <!-- 시간/분/초 입력 -->
         <input id="input-hours" type="number" min="0" placeholder="시간" />
-        <input id="input-minutes" type="number" min="0" max="59" placeholder="분" />
-        <input id="input-seconds" type="number" min="0" max="59" placeholder="초" />
+        <input
+          id="input-minutes"
+          type="number"
+          min="0"
+          max="59"
+          placeholder="분"
+        />
+        <input
+          id="input-seconds"
+          type="number"
+          min="0"
+          max="59"
+          placeholder="초"
+        />
         <button id="set-time">Set Time</button>
       </div>
 
+      <!-- 스탑워치 표시 -->
       <div id="stopwatch-display">00:00:00</div>
 
+      <!-- 스탑워치 버튼: 시작, 일시 정지, 리셋 -->
       <div class="button-grp">
         <button id="stopwatch-start">Start</button>
         <button id="stopwatch-stop">Stop</button>
@@ -33,8 +62,12 @@
       </div>
     </div>
 
+    <!-- Timer 영역 -->
     <div id="timer" class="mode">
+      <!-- 타이머 표시 -->
       <div id="timer-display">00:00:00</div>
+
+      <!-- 타이머 버튼 그룹 -->
       <div class="button-grp">
         <button id="timer-start">Start</button>
         <button id="timer-stop">Stop</button>
