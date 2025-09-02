@@ -1,4 +1,30 @@
+# ---- OS 불필요 파일 ----
 .DS_Store
 
+# ---- Python 캐시 파일 ----
 __pycache__/
+*.pyc
+*.pyo
+
+# ---- Conda / 가상환경 ----
+.venv/
+venv/
+env/
+ENV/
+*.env
+
+# ---- 환경 변수 파일 ----
 .env
+*.env
+
+# ---- 빌드 / 배포 산출물 ----
+build/
+dist/
+*.egg-info/
+
+# ---- 로그 / 임시 파일 ----
+*.log
+*.tmp
+
+# ---- Jupyter Notebook ----
+.ipynb_checkpoints/
