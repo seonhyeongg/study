@@ -1,0 +1,96 @@
+:root {
+  --header-h: 140px;
+}
+
+/* 페이지 기본 레이아웃 */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.stage {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  min-height: calc(100vh - var(--header-h));
+}
+
+/* 입력창 */
+input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+  font-size: 15px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+/* 버튼 */
+button {
+  padding: 10px 16px;
+  background: #007bff;
+  color: #fff;
+  font-weight: 600;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.08s;
+}
+button:hover {
+  background: #0056b3;
+}
+button:active {
+  transform: scale(0.98);
+}
+
+/* 결과창 */
+.output,
+.box-common,
+.card-common {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  background: #fff;
+  padding: 16px 20px;
+  border-radius: 10px;
+  border: 2px solid #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  width: 400px;
+  box-sizing: border-box;
+
+  text-align: left;
+  transition: all 0.3s ease;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
