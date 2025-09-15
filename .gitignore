@@ -32,3 +32,11 @@ dist/
 
 # ---- Jupyter Notebook ----
 .ipynb_checkpoints/
+
+# ---- Vite 기반 Vue 프로젝트 추가 ----
+.vite/
+.cache/
+.temp/
+node_modules/
+dist-ssr/
+*.local
