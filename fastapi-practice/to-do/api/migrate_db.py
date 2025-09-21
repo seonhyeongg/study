@@ -12,14 +12,11 @@ ENV_FILE = BASE_DIR / ".env"
 load_dotenv(dotenv_path=ENV_FILE)
 
 host = os.getenv("HOST", "localhost")
-port = os.getenv("PORT")
-root_password = os.getenv("ROOT_PASSWORD")
 database = os.getenv("DATABASE")
-user = os.getenv("USER")
 password = os.getenv("PASSWORD")
 
 ASYNC_DB_URL = (
-    f"mysql+aiomysql://root:{root_password}@{host}:3306/{database}?charset=utf8mb4"
+    f"mysql+aiomysql://root:{password}@{host}:3306/{database}?charset=utf8mb4"
 )
 
 async_engine = create_async_engine(ASYNC_DB_URL, echo=True)
