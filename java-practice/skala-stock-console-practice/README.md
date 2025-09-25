@@ -28,7 +28,7 @@ Java Console 기반 주식 거래 연습 프로젝트
 ```bash
 # 레포지토리 클론
 git clone git@github.com:seonhyeongg/study.git
-cd study/java/skala-stock-console-practice
+cd study/java-practice/skala-stock-console-practice
 
 # 컴파일
 javac -d bin src/*.java

@@ -28,7 +28,7 @@ Vue 3 기반 주식 거래 UI 연습 프로젝트
 ```bash
 # 레포지토리 클론
 git clone git@github.com:seonhyeongg/study.git
-cd study/vue/skala-stock-ui-practice
+cd study/vue-practice/skala-stock-ui-practice
 
 # 의존성 설치
 npm install

@@ -9,7 +9,7 @@ Vue 3 학습 및 연습을 위한 예제 모음집
 ```bash
 # 레포지토리 클론
 git clone git@github.com:seonhyeongg/study.git
-cd study/vue
+cd study/vue-practice
 
 # 의존성 설치
 npm install
