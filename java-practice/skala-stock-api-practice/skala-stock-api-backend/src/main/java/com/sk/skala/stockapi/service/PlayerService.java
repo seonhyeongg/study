@@ -27,6 +27,14 @@ import com.sk.skala.stockapi.repository.StockRepository;
 import com.sk.skala.stockapi.tools.StringTool;
 import lombok.RequiredArgsConstructor;
 
+
+/**
+ * PlayerService
+ * 
+ * Player 엔터티에 대한 CRUD와 매수/매도 도메인 로직을 담당하는 서비스 계층
+ * 
+ * Controller에서 넘어온 파라미터의 유효성을 검증하고, 도메인 정책을 적용한 뒤, Repository를 통해 영속성 계층에 접근함
+ */
 @Service
 @RequiredArgsConstructor
 public class PlayerService {
@@ -35,6 +43,14 @@ public class PlayerService {
     private final PlayerStockRepository playerStockRepository;
     private final SessionHandler sessionHandler;
 
+    /**
+     * 전체 플레이어 목록 페이지 단위 조회
+     * 
+     * @param offset 페이지 인덱스 (0-base)
+     * @param count 페이지 크기
+     * @return 페이징 메타데이터의 목록을 담은 Response
+     * @throws ParameterException count <=0 또는 offset < 0인 경우
+     */
     public Response getAllPlayers(int offset, int count) {
         if (count <= 0 || offset < 0) {
             throw new ParameterException("offset", "count");
@@ -54,6 +70,14 @@ public class PlayerService {
         return response;
     }
 
+    /**
+     * ID로 플레이어 단건 조회
+     * 
+     * @param playerId 플레이어 ID
+     * @return PlayerStockListDto를 담은 Response
+     * @throws ParameterExeption playerId가 null인 경우
+     * @throws ResponseException 데이터가 없을 경우
+     */
     @Transactional(readOnly = true)
     public Response getPlayerById(String playerId) {
         if (playerId == null) {
@@ -82,6 +106,14 @@ public class PlayerService {
         return response;
     }
 
+    /**
+     * 플레이어 생성
+     * 
+     * @param playerSession 플레이어 정보
+     * @return 빈 본문을 가진 성공 Response
+     * @throws ParameterException playerID 또는 playerPassword가 비어있는 경우
+     * @throws ResponseException 동일 ID의 플레이어가 이미 존재하는 경우
+     */
     public Response createPlayer(Player playerSession) {
         if (StringTool.isAnyEmpty(playerSession.getPlayerId())
                 || StringTool.isAnyEmpty(playerSession.getPlayerPassword())) {
@@ -103,6 +135,14 @@ public class PlayerService {
         return new Response();
     }
 
+    /**
+     * 플레이어 로그인
+     * 
+     * @param playerSession 로그인 요청 DTO
+     * @return 로그인한 플레이어 (비밀번호 null 처리)
+     * @throws ParameterException 필수 파라미터가 누락된 경우
+     * @throws ResponseException 사용자가 없거나 인증에 실패한 경우
+     */
     public Response loginPlayer(PlayerSession playerSession) {
         if (StringTool.isAnyEmpty(playerSession.getPlayerId())
                 || StringTool.isAnyEmpty(playerSession.getPlayerPassword())) {
@@ -128,6 +168,14 @@ public class PlayerService {
         return response;
     }
 
+    /**
+     * 플레이어 자산 업데이트
+     * 
+     * @param player playerID, playerMoney 포함
+     * @return 빈 본문을 가진 성공 Response
+     * @throws ParameterException playerID가 비어있거나 playerMoney <=0인 경우
+     * @throws ResponseException 대상 플레이어가 존재하지 않는 경우
+     */
     public Response updatePlayer(Player player) {
         if (StringTool.isAnyEmpty(player.getPlayerId()) || player.getPlayerMoney() <= 0) {
             throw new ParameterException("playerId", "playerMoney");
@@ -146,6 +194,14 @@ public class PlayerService {
         return new Response();
     }
 
+    /**
+     * 플레이어 삭제
+     * 
+     * @param player 삭제할 플레이어
+     * @return 빈 본문을 가진 성공 Response
+     * @throws ParameterException playerId가 null인 경우
+     * @throws ResponseException 대상 플레이어가 존재하지 않는 경우
+     */
     public Response deletePlayer(Player player) {
         if (player.getPlayerId() == null) {
             throw new ParameterException("playerId");
@@ -161,6 +217,13 @@ public class PlayerService {
         return new Response();
     }
 
+    /**
+     * 주식 매수
+     * 
+     * @param order stockId, stockQuantity 포함
+     * @return 빈 본문을 가진 성공 Response
+     * @throws ResponseException 대상 플레이어/주식이 존재하지 않거나 잔액이 부족한 경우
+     */
     @Transactional
     public Response buyPlayerStock(StockOrder order) {
         String playerId = sessionHandler.getPlayerId();
@@ -194,6 +257,13 @@ public class PlayerService {
         return new Response();
     }
 
+    /**
+     * 주식 매도
+     * 
+     * @param order stockId, stockQuantity 포함
+     * @return 빈 본문을 가진 성공 Response
+     * @throws ResponseException 대상 플레이어/주식이 존재하지 않거나, 플레이어가 대상 주식을 보유하지 않았거나, 대상 주식 보유 수량이 부족한 경우
+     */
     @Transactional
     public Response sellPlayerStock(StockOrder order) {
         String playerId = sessionHandler.getPlayerId();
