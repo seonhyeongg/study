@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: ./skala-stock-api-backend
+      dockerfile: Dockerfile
+    container_name: skala-backend
+    ports:
+      - "9080:9080"
+    environment:
+      JAVA_OPTS: "-Xms256m -Xmx1024m"
+
+  frontend:
+    build:
+      context: ./skala-stock-api-client
+      dockerfile: Dockerfile
+    container_name: skala-frontend
+    ports:
+      - "8501:8501"
+    environment:
+      BASE_URL: "http://backend:9080"
+    depends_on:
+      - backend
