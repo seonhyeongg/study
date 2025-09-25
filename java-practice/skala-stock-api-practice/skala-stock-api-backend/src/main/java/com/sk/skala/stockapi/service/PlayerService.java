@@ -96,7 +96,7 @@ public class PlayerService {
         Player player = new Player();
         player.setPlayerId(playerSession.getPlayerId());
         player.setPlayerPassword(playerSession.getPlayerPassword());
-        player.setPlayerMoney(100_000.0);
+        player.setPlayerMoney(playerSession.getPlayerMoney());
 
         playerRepository.save(player);
 
