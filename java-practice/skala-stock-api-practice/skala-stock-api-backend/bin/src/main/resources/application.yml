@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 9080
 
 management:
   endpoints:
@@ -36,6 +36,6 @@ spring:
 application:
   name: "SKALA-STOCK-API"
   health:
-    url: http://localhost:8080/actuator/health
+    url: http://localhost:9080/actuator/health
     timeout: 5000
     

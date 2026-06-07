@@ -45,7 +45,7 @@ cd study/java-practice/skala-stock-api-practice
 docker-compose up --build
 ```
 
-- 백엔드 API: [http://localhost:8080/api](http://localhost:8080/api)
+- 백엔드 API: [http://localhost:9080/api](http://localhost:9080/api)
 - 프론트엔드 UI: [http://localhost:8501](http://localhost:8501)
 
 ### 2. 직접 실행 (옵션)
